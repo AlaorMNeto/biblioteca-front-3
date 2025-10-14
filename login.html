@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - Biblioteca</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #555;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <form id="loginForm">
+    <h1>Login</h1>
+    <label for="username">Usuário:</label>
+    <input type="text" id="username" required />
+
+    <label for="password">Senha:</label>
+    <input type="password" id="password" required />
+
+    <button type="submit">Entrar</button>
+    <div class="error" id="errorMsg"></div>
+  </form>
+
+  <script>
+    const loginForm = document.getElementById('loginForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    const usersDB = [
+      { username: 'admin', password: '1234' },
+      { username: 'professor', password: 'abcd' },
+      { username: 'aluno', password: '4321' }
+    ];
+
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      const user = usersDB.find(u => u.username === username && u.password === password);
+
+      if (user) {
+        localStorage.setItem('loggedInUser', username);
+        window.location.href = 'usuarios.html';
+      } else {
+        errorMsg.textContent = 'Usuário ou senha incorretos.';
+      }
+    });
+  </script>
+</body>
+</html>

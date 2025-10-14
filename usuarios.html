@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cadastro de Usuários - Biblioteca</title>
+  <link rel="stylesheet" href="usuarios.css" />
+</head>
+<body>
+  <h1>Cadastro de Usuários - Biblioteca</h1>
+  <button id="logoutBtn" style="position: fixed; top: 10px; right: 10px;">Sair</button>
+
+  <form id="userForm">
+    <label for="name">Nome:</label>
+    <input type="text" id="name" required />
+
+    <label for="role">Tipo de Usuário:</label>
+    <select id="role" required>
+      <option value="" disabled selected>Selecione...</option>
+      <option value="Aluno">Aluno</option>
+      <option value="Professor">Professor</option>
+      <option value="Colaborador">Colaborador</option>
+    </select>
+
+    <label for="loanLimit">Limite de Empréstimos Simultâneos:</label>
+    <input type="number" id="loanLimit" min="1" max="10" value="3" required />
+
+    <label>
+      <input type="checkbox" id="penalty" />
+      Possui penalidade?
+    </label>
+
+    <label>
+      <input type="checkbox" id="suspended" />
+      Suspenso?
+    </label>
+
+    <button type="submit">Cadastrar Usuário</button>
+  </form>
+
+  <div class="user-list">
+    <h2>Usuários Cadastrados</h2>
+    <table id="usersTable">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Tipo</th>
+          <th>Limite Empréstimos</th>
+          <th>Penalidade</th>
+          <th>Suspensão</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </div>
+
+  <script src="usuarios.js"></script>
+</body>
+</html>
